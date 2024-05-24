@@ -57,3 +57,7 @@ Utiliza las credenciales predeterminadas:
 
 ## Interfaz Menu Principal
 ![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/cdc12da3-727e-407b-858b-81f56d0973dd)
+
+## Interfaz de tablas
+![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/76cd0049-00de-4411-9a95-f9774859cd10)
+
