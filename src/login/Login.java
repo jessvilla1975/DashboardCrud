@@ -1,5 +1,6 @@
 package login;
-
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import AppPackage.AnimationClass;
 import java.awt.Color;
 import raven.table.Test;
@@ -10,7 +11,10 @@ public class Login extends javax.swing.JFrame {
     
     public Login() {
         initComponents();
-        t.setVisible(true);
+        userTxt.setBackground(Color.WHITE);
+        userTxt.setFocusable(false); 
+        passTxt.setBackground(Color.WHITE);
+        passTxt.setFocusable(false); 
     }
     
     @SuppressWarnings("unchecked")
@@ -127,10 +131,13 @@ public class Login extends javax.swing.JFrame {
         if (userTxt.getText().equals("Username")) {
             userTxt.setText("");
             userTxt.setForeground(Color.black);
+            userTxt.setFocusable(true);
+            userTxt.requestFocusInWindow();
         }
         if (String.valueOf(passTxt.getPassword()).isEmpty()) {
             passTxt.setText("****");
             passTxt.setForeground(Color.gray);
+            
         }
     }//GEN-LAST:event_userTxtMousePressed
 
@@ -138,6 +145,8 @@ public class Login extends javax.swing.JFrame {
         if (String.valueOf(passTxt.getPassword()).equals("****")) {
             passTxt.setText("");
             passTxt.setForeground(Color.black);
+            passTxt.setFocusable(true);
+            passTxt.requestFocusInWindow();
         }
         if (userTxt.getText().isEmpty()) {
             userTxt.setText("Username");
@@ -219,7 +228,8 @@ public class Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        FlatLaf.registerCustomDefaultsSource("raven.table");
+        FlatMacDarkLaf.setup();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
