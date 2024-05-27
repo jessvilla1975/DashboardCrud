@@ -75,7 +75,7 @@ public class IngresarProducto extends javax.swing.JFrame {
         PanelColegio.setBackground(new java.awt.Color(255, 255, 255));
         PanelColegio.setPreferredSize(new java.awt.Dimension(620, 550));
 
-        Title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Title.setText("Datos Producto");
         Title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -340,7 +340,7 @@ public class IngresarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_GuardarMouseExited
 
     private void GuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarMouseEntered
-        Guardar.setBackground(new java.awt.Color(21, 101, 192));
+        Guardar.setBackground(new java.awt.Color(42, 33, 133));
     }//GEN-LAST:event_GuardarMouseEntered
 
     private void texttipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texttipoActionPerformed

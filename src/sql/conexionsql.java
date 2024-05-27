@@ -40,10 +40,10 @@ public class conexionsql {
         }
     }
     //prueba de conexion 
-    /*public static void main(String[] args){
+    public static void main(String[] args){
         conexionsql co = new conexionsql();
         co.conectar();    
     
-    }*/
+    }
     
 }

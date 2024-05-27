@@ -5,13 +5,17 @@
 package vistas.menus;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JComponent;
 import login.Login;
 import login.usersLogin;
-import raven.table.Test;
+import table.Test;
 import sql.crudsql;
 import vistas.ingresar.IngresarProducto;
-
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Jess
@@ -30,13 +34,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         initComponents();
         buscar.setBackground(Color.WHITE);
         buscar.setFocusable(false); 
-       
-        
-        
-        
-        
+        contarProductos(); 
+        contarProductosAgotados();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,11 +46,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        bg = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         Pstocks = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        signout4 = new javax.swing.JLabel();
+        stockCantidad = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         Ptables = new javax.swing.JPanel();
         l1 = new javax.swing.JLabel();
@@ -60,7 +60,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         Pitems = new javax.swing.JPanel();
-        l3 = new javax.swing.JLabel();
+        cantidad = new javax.swing.JLabel();
         l4 = new javax.swing.JLabel();
         ico2 = new javax.swing.JLabel();
         Panelmenu = new javax.swing.JPanel();
@@ -70,20 +70,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
         help = new javax.swing.JLabel();
         setting = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         buscar = new javax.swing.JTextField();
         add = new javax.swing.JLabel();
         delete = new javax.swing.JLabel();
         signOut4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(-2, 0));
+        setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(844, 500));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        bg.setBackground(new java.awt.Color(255, 255, 255));
+        bg.setMinimumSize(new java.awt.Dimension(1370, 735));
+        bg.setPreferredSize(new java.awt.Dimension(1370, 735));
+        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Titulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Titulo.setForeground(new java.awt.Color(42, 33, 133));
@@ -94,7 +97,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 TituloMouseClicked(evt);
             }
         });
-        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 280, 50));
+        bg.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 280, 50));
 
         Pstocks.setBackground(new java.awt.Color(255, 255, 255));
         Pstocks.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(204, 204, 204))); // NOI18N
@@ -117,21 +120,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel15.setText("Stock Items");
         Pstocks.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
-        signout4.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        signout4.setForeground(new java.awt.Color(42, 33, 133));
-        signout4.setText("5");
-        signout4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        signout4.addMouseListener(new java.awt.event.MouseAdapter() {
+        stockCantidad.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        stockCantidad.setForeground(new java.awt.Color(42, 33, 133));
+        stockCantidad.setText("5");
+        stockCantidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        stockCantidad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signout4MouseClicked(evt);
+                stockCantidadMouseClicked(evt);
             }
         });
-        Pstocks.add(signout4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 70));
+        Pstocks.add(stockCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 70));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/alert.png"))); // NOI18N
         Pstocks.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 70, 60));
 
-        jPanel1.add(Pstocks, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, 220, 120));
+        bg.add(Pstocks, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, 220, 120));
 
         Ptables.setBackground(new java.awt.Color(255, 255, 255));
         Ptables.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(204, 204, 204))); // NOI18N
@@ -168,7 +171,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ico3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cells.png"))); // NOI18N
         Ptables.add(ico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 70, 60));
 
-        jPanel1.add(Ptables, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 220, 120));
+        bg.add(Ptables, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 220, 120));
 
         Pfiles.setBackground(new java.awt.Color(255, 255, 255));
         Pfiles.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(204, 204, 204))); // NOI18N
@@ -194,7 +197,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/file.png"))); // NOI18N
         Pfiles.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 70, 60));
 
-        jPanel1.add(Pfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 220, 120));
+        bg.add(Pfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 220, 120));
 
         Pitems.setBackground(new java.awt.Color(255, 255, 255));
         Pitems.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(204, 204, 204))); // NOI18N
@@ -212,16 +215,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         Pitems.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        l3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        l3.setForeground(new java.awt.Color(42, 33, 133));
-        l3.setText("120");
-        l3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        l3.addMouseListener(new java.awt.event.MouseAdapter() {
+        cantidad.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        cantidad.setForeground(new java.awt.Color(42, 33, 133));
+        cantidad.setText("120");
+        cantidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cantidad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                l3MouseClicked(evt);
+                cantidadMouseClicked(evt);
             }
         });
-        Pitems.add(l3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 70));
+        Pitems.add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 70));
 
         l4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         l4.setForeground(new java.awt.Color(153, 153, 153));
@@ -231,7 +234,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/prenda.png"))); // NOI18N
         Pitems.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 70, 60));
 
-        jPanel1.add(Pitems, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 220, 120));
+        bg.add(Pitems, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 220, 120));
 
         Panelmenu.setBackground(new java.awt.Color(42, 33, 133));
         Panelmenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -239,8 +242,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("StockFlow");
-        Panelmenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
+        jLabel1.setText("Inventory App");
+        Panelmenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
         signOut.setBackground(new java.awt.Color(42, 33, 133));
         signOut.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -317,14 +320,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         Panelmenu.add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, 80, 410, 40));
 
-        jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 700));
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(153, 153, 153))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 330, 40));
+        bg.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 735));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/lupa.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 20, 20));
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        bg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 20, 20));
 
         buscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         buscar.setForeground(new java.awt.Color(102, 102, 102));
@@ -340,7 +345,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 buscarActionPerformed(evt);
             }
         });
-        jPanel1.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 270, 20));
+        bg.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 270, 20));
 
         add.setBackground(new java.awt.Color(255, 255, 255));
         add.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -361,7 +366,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 addMouseExited(evt);
             }
         });
-        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 230, 30, -1));
+        bg.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 230, 30, -1));
 
         delete.setBackground(new java.awt.Color(255, 255, 255));
         delete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -381,7 +386,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 deleteMouseExited(evt);
             }
         });
-        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 230, 30, -1));
+        bg.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 230, 30, -1));
 
         signOut4.setBackground(new java.awt.Color(255, 255, 255));
         signOut4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -391,6 +396,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         signOut4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signOut4.setOpaque(true);
         signOut4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signOut4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 signOut4MouseEntered(evt);
             }
@@ -398,7 +406,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 signOut4MouseExited(evt);
             }
         });
-        jPanel1.add(signOut4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 230, 30, -1));
+        bg.add(signOut4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 230, 30, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/avatarAdmin.png"))); // NOI18N
+        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, 30, 40));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("User");
+        bg.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -406,13 +421,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 1370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -430,9 +445,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buscarActionPerformed
 
-    private void signout4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signout4MouseClicked
+    private void stockCantidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stockCantidadMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_signout4MouseClicked
+    }//GEN-LAST:event_stockCantidadMouseClicked
 
     private void signOutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseEntered
         signOut.setBackground(new java.awt.Color(255,255,255));
@@ -474,9 +489,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setting.setForeground(new java.awt.Color(255,255,255));
     }//GEN-LAST:event_settingMouseExited
 
-    private void l3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_l3MouseClicked
+    private void cantidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cantidadMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_l3MouseClicked
+    }//GEN-LAST:event_cantidadMouseClicked
 
     private void l1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_l1MouseClicked
         // TODO add your handling code here:
@@ -484,9 +499,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void PtablesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PtablesMouseClicked
         System.out.println("boton tablas");
+        contarProductos(); 
+        contarProductosAgotados();
         tablita.testData();
-        tablita.setVisible(true);
         tablita.setBounds(330, 300, 872, 418);
+        tablita.setVisible(true);
        
     }//GEN-LAST:event_PtablesMouseClicked
 
@@ -509,13 +526,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void PitemsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PitemsMouseEntered
         Pitems.setBackground(new java.awt.Color(42,33,133));
-        l3.setForeground(new java.awt.Color(255,255,255));
+        cantidad.setForeground(new java.awt.Color(255,255,255));
         l4.setForeground(new java.awt.Color(255,255,255));
     }//GEN-LAST:event_PitemsMouseEntered
 
     private void PitemsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PitemsMouseExited
         Pitems.setBackground(new java.awt.Color(255,255,255));
-        l3.setForeground(new java.awt.Color(42,33,133));
+        cantidad.setForeground(new java.awt.Color(42,33,133));
         l4.setForeground(new java.awt.Color(153,153,153));
     }//GEN-LAST:event_PitemsMouseExited
 
@@ -534,18 +551,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_PfilesMouseExited
 
     private void PstocksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PstocksMouseClicked
-        // TODO add your handling code here:
+        System.out.println("boton stock");
+        contarProductos(); 
+        contarProductosAgotados();
+        tablita.testData4();
+        tablita.setBounds(330, 300, 872, 418);
+        tablita.setBackground(Color.WHITE);
+        tablita.setVisible(true);
     }//GEN-LAST:event_PstocksMouseClicked
 
     private void PstocksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PstocksMouseEntered
         Pstocks.setBackground(new java.awt.Color(42,33,133));
-        signout4.setForeground(new java.awt.Color(255,255,255));
+        stockCantidad.setForeground(new java.awt.Color(255,255,255));
         jLabel15.setForeground(new java.awt.Color(255,255,255));
     }//GEN-LAST:event_PstocksMouseEntered
 
     private void PstocksMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PstocksMouseExited
         Pstocks.setBackground(new java.awt.Color(255,255,255));
-        signout4.setForeground(new java.awt.Color(42,33,133));
+        stockCantidad.setForeground(new java.awt.Color(42,33,133));
         jLabel15.setForeground(new java.awt.Color(153,153,153));
     }//GEN-LAST:event_PstocksMouseExited
 
@@ -585,8 +608,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
         System.out.println("Se presionó el botón eliminar");
+         
         tablita.eliminarFila();
         tablita.testData();
+        contarProductos();
         tablita.setVisible(true);
 
         
@@ -596,12 +621,43 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
         System.out.println("add");
         ad.setVisible(true);
+        contarProductos(); 
+        contarProductosAgotados();
         tablita.setVisible(false);
         
         
         
        
     }//GEN-LAST:event_addMouseClicked
+  
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        System.out.println("boton buscar");
+        int id = Integer.parseInt(buscar.getText());
+        tablita.testData2(id);
+        tablita.setBounds(330, 300, 872, 60);
+        tablita.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void signOut4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOut4MouseClicked
+        System.out.println("boton update");
+        tablita.testData3();
+        tablita.setBounds(330, 300, 872, 60);
+        contarProductosAgotados();
+        tablita.setVisible(true);
+    }//GEN-LAST:event_signOut4MouseClicked
+    private void contarProductos() {
+    String cant = String.valueOf(crud.contarProductos()); 
+    cantidad.setText(cant);
+    }
+    
+    private void contarProductosAgotados() {
+    String cant = String.valueOf(crud.stockProductos()); 
+    stockCantidad.setText(cant);
+    
+    }
+
 
     /**
      * @param args the command line arguments
@@ -632,7 +688,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        FlatLaf.registerCustomDefaultsSource("raven.table");
+        FlatLaf.registerCustomDefaultsSource("table");
         FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -651,7 +707,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel Ptables;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel add;
+    private javax.swing.JPanel bg;
     private javax.swing.JTextField buscar;
+    private javax.swing.JLabel cantidad;
     private javax.swing.JLabel delete;
     private javax.swing.JLabel help;
     private javax.swing.JLabel home;
@@ -664,15 +722,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel l1;
     private javax.swing.JLabel l2;
-    private javax.swing.JLabel l3;
     private javax.swing.JLabel l4;
     private javax.swing.JLabel setting;
     private javax.swing.JLabel signOut;
     private javax.swing.JLabel signOut4;
-    private javax.swing.JLabel signout4;
+    private javax.swing.JLabel stockCantidad;
     // End of variables declaration//GEN-END:variables
 }
