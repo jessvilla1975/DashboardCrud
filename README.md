@@ -53,11 +53,15 @@ Utiliza las credenciales predeterminadas:
 ![Icono de Contraseña](https://img.shields.io/badge/-Contraseña-%2300f?style=flat-square&logo=lock) :admin
 
 ## Interfaz Login
-![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/92e929a4-a12a-4c05-a600-d4b60c43b030)
+![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/8b655848-8633-48dd-aa78-be113a7f43a2)
+
 
 ## Interfaz Menu Principal
-![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/cdc12da3-727e-407b-858b-81f56d0973dd)
+![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/02c8920c-9e69-4149-bf02-dd7f894ca5b1)
+
 
 ## Interfaz de tablas
 ![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/76cd0049-00de-4411-9a95-f9774859cd10)
 
+## Interfaz de insertar producto
+![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/ef9320fe-5386-44c0-8962-14b5457b6310)
