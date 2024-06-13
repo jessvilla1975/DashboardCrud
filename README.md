@@ -51,13 +51,51 @@ Utiliza las credenciales predeterminadas:
 
 ![Icono de Usuario](https://img.shields.io/badge/-Usuario-%2300f?style=flat-square&logo=user): admin
 ![Icono de Contraseña](https://img.shields.io/badge/-Contraseña-%2300f?style=flat-square&logo=lock) :admin
-
+## Estructura del proyecto
+```
+└── 📁src
+    └── 📁App
+        └── Start.java
+    └── 📁Icons
+    └── 📁login
+        └── Login.form
+        └── Login.java
+        └── LoginUsuarios.java
+    └── 📁ropa
+        └── Ropa.java
+    └── 📁sql
+        └── ConexionSQL.java
+        └── Inventario.java
+    └── 📁table
+        └── FlatLaf.properties
+        └── TablaInventario.form
+        └── TablaInventario.java
+        └── TablaUsuarios.form
+        └── TablaUsuarios.java
+        └── TableGradientCell.java
+    └── 📁usuarios
+        └── Administrador.java
+        └── Usuario.java
+        └── Vendedor.java
+    └── 📁video
+        └── videito.gif
+        └── vidInv.gif
+    └── 📁vistas
+        └── 📁ingresar
+            └── IngresarRopa.form
+            └── IngresarRopa.java
+            └── IngresarUsers.form
+            └── IngresarUsers.java
+        └── 📁menus
+            └── MenuPrincipal.form
+            └── MenuPrincipal.java
+```
 ## Interfaz Login
-![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/8b655848-8633-48dd-aa78-be113a7f43a2)
+[![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/8b655848-8633-48dd-aa78-be113a7f43a2)](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/35f85f1c-2763-4ffb-8e71-414c445d35af)
 
 
 ## Interfaz Menu Principal
-![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/02c8920c-9e69-4149-bf02-dd7f894ca5b1)
+[![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/02c8920c-9e69-4149-bf02-dd7f894ca5b1)](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/676450eb-6873-4b57-ab8d-5b389cb51978)
 
 
 ## Interfaz de tablas
