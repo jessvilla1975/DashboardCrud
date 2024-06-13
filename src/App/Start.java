@@ -1,9 +1,14 @@
+/**
+ * La clase Inicio en el paquete de la aplicación configura la apariencia de FlatLaf con un tema
+ * personalizado y abre una ventana de inicio de sesión.
+ */
 
 package App;
 
 
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+
 import login.Login;
 
 

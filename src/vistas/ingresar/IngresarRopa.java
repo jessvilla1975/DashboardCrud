@@ -1,20 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+/**
+ * La clase `IngresarRopa` es un panel GUI de Java para ingresar detalles de productos de ropa en un
+ * sistema de inventario.
  */
+
 package vistas.ingresar;
 import java.awt.Color;
 import sql.Inventario;
 
-/**
- *
- * @author Jess
- */
+
 public class IngresarRopa extends javax.swing.JPanel {
 
-    /**
-     * Creates new form IngresarRopa
-     */
+    
 
     Inventario crud=new Inventario();
     public IngresarRopa() {

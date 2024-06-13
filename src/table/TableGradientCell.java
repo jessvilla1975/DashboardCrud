@@ -1,3 +1,8 @@
+/**
+ * La clase `TableGradientCell` es un renderizador de celdas personalizado para JTable en Java que
+ * proporciona un color de fondo degradado para las celdas seleccionadas y un fondo blanco para las
+ * celdas no seleccionadas.
+ */
 package table;
 
 import java.awt.Color;
@@ -10,10 +15,7 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-/**
- *
- * @author RAVEN
- */
+
 public class TableGradientCell extends DefaultTableCellRenderer {
 
     public TableGradientCell() {

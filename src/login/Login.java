@@ -1,3 +1,7 @@
+/**
+ * La clase `Login` en Java es una aplicación GUI que permite a los usuarios iniciar sesión con un
+ * nombre de usuario y contraseña, presentando elementos interactivos y animaciones.
+ */
 package login;
 import AppPackage.AnimationClass;
 import java.awt.Dimension;
@@ -11,9 +15,7 @@ import javax.swing.SwingUtilities;
 
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form xs
-     */
+    
     private int posicionX = 0;
     private boolean estado = true;
     public Login() {

@@ -1,7 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+/**
+ * La clase TablaInventario en Java se utiliza para crear una visualización de tabla para datos de
+ * inventario con métodos para completar, actualizar y eliminar filas.
  */
+
 package table;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLaf;
@@ -16,15 +17,10 @@ import javax.swing.table.DefaultTableModel;
 import sql.Inventario;
 import sql.Inventario;
 
-/**
- *
- * @author Jess
- */
+
 public class TablaInventario extends javax.swing.JPanel {
 
-    /**
-     * Creates new form xd
-     */
+    
     Inventario crud = new Inventario();
     public TablaInventario() {
         initComponents();

@@ -1,3 +1,8 @@
+/**
+ * La clase `Inventario` en Java proporciona métodos para administrar productos en una base de datos,
+ * incluida la inserción, actualización, búsqueda, listado y generación de informes en Excel con
+ * representaciones de gráficos de barras.
+ */
 package sql;
 import java.io.ByteArrayOutputStream;
 import java.sql.Connection;
@@ -35,6 +40,28 @@ public class Inventario extends ConexionSQL {
 }
     
 ////INSERT////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Esta función Java inserta un nuevo producto en una tabla de base de datos con atributos
+     * específicos y muestra un mensaje de éxito o error usando JOptionPane.
+     * 
+     * @param id El parámetro `id` en el método `Insertar` representa el identificador único del
+     * producto que desea insertar en la tabla de la base de datos. Normalmente es un valor entero que
+     * se utiliza para identificar de forma única cada producto en la base de datos.
+     * @param tipo Tipo se refiere al tipo o categoría del producto que se inserta en la base de datos.
+     * Podría ser algo así como "camisa", "pantalones", "zapatos", etc.
+     * @param talla El parámetro "talla" en el método Insertar representa el tamaño del producto. Por
+     * lo general, se utiliza para especificar el tamaño de prendas de vestir, como pequeña, mediana,
+     * grande, etc.
+     * @param cantidad "Cantidad" es un parámetro que representa la cantidad o número de artículos de
+     * un producto que se insertan en una base de datos. Es un valor entero que indica cuántas unidades
+     * del producto se están agregando al inventario.
+     * @param genero "genero" es un parámetro que representa el género del producto que se inserta en
+     * la base de datos. Es un parámetro de tipo String en el método Insertar.
+     * @param color El parámetro "color" en el método "Insertar" representa el color del producto que
+     * se inserta en la base de datos. Es un parámetro de tipo String que contiene la información de
+     * color del producto. Al llamar al método "Insertar", deberá proporcionar un valor de color
+     * específico para el producto que se agrega.
+     */
     public void Insertar(int id, String tipo, String talla, int cantidad, String genero, String color) {
         try {
             Connection conexion = conectar();
@@ -56,6 +83,15 @@ public class Inventario extends ConexionSQL {
         }
     }
     ///////////////////BUSCAR///////////////////////////////////////
+    /**
+     * La función busca un producto en una base de datos por su ID y devuelve el conjunto de
+     * resultados.
+     * 
+     * @param id El método `buscarPorId` toma un número entero `id` como parámetro, que se utiliza para
+     * buscar un producto específico en la base de datos en función de su identificador único.
+     * @return Se devuelve un ResultSet que contiene los datos del producto con la identificación
+     * especificada.
+     */
     public ResultSet buscarPorId(int id) {
         try {
             Connection conexion = conectar();
@@ -70,6 +106,13 @@ public class Inventario extends ConexionSQL {
         }
     }
     
+    /**
+     * La función ListarProductosAgregados recupera de una base de datos productos con cantidad menor o
+     * igual a 6.
+     * 
+     * @return Este método devuelve un ResultSet que contiene los productos que tienen una cantidad
+     * menor o igual a 6 de la tabla "productos" de la base de datos.
+     */
     public ResultSet ListarProductosAgregados() {
     try {
         Connection conexion = conectar();
@@ -87,6 +130,29 @@ public class Inventario extends ConexionSQL {
     ///////////////////UPDATE///////////////////////////////////////
    
 
+    /**
+     * La función "Actualizar" actualiza un producto en una base de datos según el ID proporcionado con
+     * nueva información como tipo, tamaño, cantidad, sexo y color.
+     * 
+     * @param id El parámetro `id` en el método `Actualizar` representa el identificador único del
+     * producto que desea actualizar en la base de datos. Esta identificación se utiliza para ubicar el
+     * registro de producto específico que debe modificarse.
+     * @param tipo El parámetro "tipo" en el método representa el tipo de producto. Podría ser una
+     * categoría o clasificación a la que pertenece el producto, como por ejemplo “Zapatos”, “Ropa”,
+     * “Accesorios”, etc.
+     * @param talla El parámetro "talla" en el método representa el tamaño del producto. Podría ser una
+     * talla de ropa como pequeña, mediana, grande, etc., dependiendo del tipo de producto que se
+     * trate.
+     * @param cantidad El parámetro "cantidad" en el método representa la cantidad o importe del
+     * producto que se actualiza. Es un valor entero que indica cuántas unidades del producto hay
+     * disponibles o en stock.
+     * @param genero El parámetro "género" en el método representa el género del producto. Es un
+     * parámetro de tipo Cadena que se utiliza para especificar la categoría de género a la que
+     * pertenece el producto, como "Hombres", "Mujeres", "Unisex", etc. Esta información se puede
+     * utilizar para categorizar y organizar productos según
+     * @param color El color es un parámetro que representa el color del producto. Es de tipo String en
+     * el método `Actualizar` y se utiliza para actualizar el color de un producto en la base de datos.
+     */
     public void Actualizar(int id, String tipo, String talla, int cantidad, String genero, String color) {
         try {
             Connection conexion = conectar();
@@ -129,6 +195,15 @@ public class Inventario extends ConexionSQL {
     
     
     //////////////////////ELIMINAR////////////////////////////////////////////////////
+    /**
+     * El método `Eliminar` elimina un producto de una tabla de base de datos según la ID proporcionada
+     * y muestra un mensaje de éxito o error usando JOptionPane.
+     * 
+     * @param id El método "Eliminar" está diseñado para eliminar un producto de una tabla de base de
+     * datos según el parámetro "id" proporcionado. El parámetro "id" representa el identificador único
+     * del producto que debe eliminarse. Cuando se llama al método con un "id" específico, construye
+     * una consulta SQL para eliminar
+     */
     public void Eliminar(int id) {
     try {
         Connection conexion = conectar();
@@ -145,6 +220,12 @@ public class Inventario extends ConexionSQL {
     }
   }
   ///////////////////////FUNCIONES AUX////////////////////////////////////////////////
+    /**
+     * La función `ContarProductos` recupera el recuento de productos de una tabla de base de datos.
+     * 
+     * @return El método `ContarProductos()` devuelve un valor entero, que representa el recuento de
+     * productos en la tabla "productos" de la base de datos.
+     */
     public int ContarProductos() {
         int cantidad = 0;
         try {
@@ -164,6 +245,13 @@ public class Inventario extends ConexionSQL {
         return cantidad;
     }
     
+    /**
+     * La función `StockProductos` recupera el recuento de productos con una cantidad menor a 6 de una
+     * tabla de base de datos.
+     * 
+     * @return El método `StockProductos` está devolviendo el conteo de productos que tienen una
+     * cantidad menor a 6 en la tabla de la base de datos `productos`.
+     */
     public int StockProductos() {
     int cantidad = 0;
     try {
@@ -183,6 +271,10 @@ public class Inventario extends ConexionSQL {
     return cantidad;
 }
     
+    /**
+     * La función genera un informe de productos a partir de una base de datos, incluidos datos en un
+     * archivo de Excel y una representación de gráfico de barras de los tipos de productos.
+     */
     public void generarReporteProductos() {
     try {
         Connection conexion = conectar();

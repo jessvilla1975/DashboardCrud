@@ -1,3 +1,7 @@
+/**
+ * La clase `ConexionSQL` en Java establece una conexión a una base de datos MySQL utilizando
+ * credenciales específicas y proporciona métodos para conectarse y desconectarse de la base de datos.
+ */
 
 package sql;
 import java.sql.Connection;
@@ -19,6 +23,12 @@ public class ConexionSQL {
     public ConexionSQL(){
     }
     
+    /**
+     * La función "conectar" intenta establecer una conexión a una base de datos utilizando el
+     * controlador, URL, nombre de usuario y contraseña especificados en Java.
+     * 
+     * @return El método `conectar()` devuelve un objeto `Connection`.
+     */
     public Connection conectar(){
         try {
             Class.forName(driver);
@@ -32,6 +42,10 @@ public class ConexionSQL {
         return cx;
     }
     
+    /**
+     * El método `desconectar` se utiliza para desconectarse de una base de datos SQL cerrando la
+     * conexión.
+     */
     public void desconectar(){
         try {
             cx.close();

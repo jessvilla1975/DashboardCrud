@@ -1,7 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+/**
+ * La clase `MenuPrincipal` en Java representa una aplicación GUI para administrar elementos y usuarios
+ * del inventario, con funcionalidades para agregar, eliminar, actualizar elementos y registrar
+ * usuarios.
  */
+
 package vistas.menus;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
@@ -27,10 +29,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-/**
- *
- * @author Jess
- */
+
 public class MenuPrincipal extends javax.swing.JFrame {
     
     LoginUsuarios user = new LoginUsuarios();
@@ -43,9 +42,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
    
     
-    /**
-     * Creates new form MenuPrincipal
-     */
+    
     public MenuPrincipal() {
         
         initComponents();
@@ -1116,9 +1113,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
  
    
 
-    /**
-     * @param args the command line arguments
-     */
+    
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

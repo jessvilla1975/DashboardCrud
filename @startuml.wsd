@@ -1,0 +1,96 @@
+@startuml   
+class LoginUsuario {
+  +nombre: String
+  +password: String
+  
+  +login(): void
+
+
+  +public boolean ingresoAdmin(String user, String password)
+ 
+}
+class Usuario {
+    +id: int
+    +nombre: String
+    +email: String
+    +password: String
+    +SetNombre(): void
+    +SetEmail(): void
+    +SetPassword(): void
+    +GetNombre(): String
+    +GetEmail(): String
+    +GetPassword(): String
+    +SetId(): void
+    +GetId(): int
+}
+class Administrador {
+    
+  +RegistrarUsuarios(id: int, nombre: String, email: String, password: String): void
+  
+}
+
+class Vendedor {
+    +GenerarReportes(): void
+}
+
+class Ropa {
+  +id: int
+  +Tipo: String
+  +Talla: String
+  +Cantidad: int
+  +Genero: String
+  +Color: String
+
+    +SetId(): void
+    +SetTipo(): void
+    +SetTalla(): void
+    +SetCantidad(): void
+    +SetGenero(): void
+    +SetColor(): void
+    +GetId(): int
+    +GetTipo(): String
+    +GetTalla(): String
+    +GetCantidad(): int
+    +GetGenero(): String
+    +GetColor(): String
+}
+
+class Inventario {
+  +ropa: List<Ropa>
+  
+
+  +ResultSet Listar(String tabla)
+  +Insertar(int id, String tipo, String talla, int cantidad, String genero, String color)
+  +ResultSet Buscar(int id)
+  +ResultSet ListarProductosAgotados()
+  +Actualizar(int id, String tipo, String talla, int cantidad, String genero, String color)
+  +Eliminar(int id)
+  +ContarProductos()
+  +StockProductos()
+}
+
+class ConectionSQL {
+    +bd: String
+    +url: String
+    +usario: String
+    +clave: String
+    +driver: String
+
+      +conectar(): void
+      +desconectar(): void
+
+}
+
+
+Usuario <|-- Administrador 
+Usuario <|-- Vendedor
+Inventario o-- Ropa
+ConectionSQL -- LoginUsuario : ingresa <
+Administrador -- LoginUsuario : acceden >
+Vendedor -- LoginUsuario : acceden >
+LoginUsuario -- Inventario : realiza >
+
+
+
+
+@enduml

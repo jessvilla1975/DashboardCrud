@@ -1,22 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+/**
+ * La clase `IngresarUsers` es un panel GUI de Java para registrar usuarios con campos de ID, nombre,
+ * correo electrónico y contraseña.
  */
+
 package vistas.ingresar;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import usuarios.Administrador;
 
-/**
- *
- * @author Jess
- */
+
 public class IngresarUsers extends javax.swing.JPanel {
 
-    /**
-     * Creates new form IngresarUsers
-     */
+    
    
     public IngresarUsers() {
         initComponents();
