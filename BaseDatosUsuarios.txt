@@ -1,27 +1,27 @@
 -- delete
 TRUNCATE TABLE usuarios;
-
-
 INSERT INTO usuarios (id, nombre, email, password) VALUES
-(1, 'Juan Perez', 'juan.perez@example.com', 'password123'),
-(2, 'Maria Lopez', 'maria.lopez@example.com', 'password456'),
-(3, 'Carlos Sanchez', 'carlos.sanchez@example.com', 'password789'),
-(4, 'Ana Garcia', 'ana.garcia@example.com', 'password101'),
-(5, 'Luis Fernandez', 'luis.fernandez@example.com', 'password202'),
-(6, 'Laura Gomez', 'laura.gomez@example.com', 'password303'),
-(7, 'Pedro Martinez', 'pedro.martinez@example.com', 'password404'),
-(8, 'Marta Rodriguez', 'marta.rodriguez@example.com', 'password505'),
-(9, 'Josefa Ramirez', 'josefa.ramirez@example.com', 'password606'),
-(10, 'Ramon Herrera', 'ramon.herrera@example.com', 'password707'),
-(11, 'Nicolas Torres', 'nicolas.torres@example.com', 'password808'),
-(12, 'Patricia Alvarez', 'patricia.alvarez@example.com', 'password909'),
-(13, 'David Ruiz', 'david.ruiz@example.com', 'password010'),
-(14, 'Sofia Moreno', 'sofia.moreno@example.com', 'password111'),
-(15, 'Jorge Diaz', 'jorge.diaz@example.com', 'password212'),
-(16, 'Lucia Gutierrez', 'lucia.gutierrez@example.com', 'password313'),
-(17, 'Raul Rojas', 'raul.rojas@example.com', 'password414'),
-(18, 'Elena Castro', 'elena.castro@example.com', 'password515'),
-(19, 'Victor Ramos', 'victor.ramos@example.com', 'password616'),
-(20, 'Teresa Mendez', 'teresa.mendez@example.com', 'password717');
+(1, 'eGQEfThASmNURDjMLC7Ubw==', 'juan.perez@example.com', 'K6Yvupuv/YXKwG7hy8xlZQ=='),
+(2, 'M0n7DggMqPcDS3aXAKe5Ag==', 'maria.lopez@example.com', 'Scb9F2E3wSz1rYoRsDo7pQ=='),
+(3, '61XzjTocoAmDa4qRp8A/vw==', 'carlos.sanchez@example.com', 'w5TIcEMhVIiTU45bNGcMkA=='),
+(4, 'oGjrFyjqOC+B//uFjUbgYw==', 'ana.garcia@example.com', 'pY9w2SWCKDktNxjV5X3hJw=='),
+(5, 'DKW7rAh1bVlMU+oi3HwD/g==', 'luis.fernandez@example.com', 'AzaFZ0GW7dkElUlXUxaLGA=='),
+(6, 'oh8g9tNWuR24YobR3htv/w==', 'laura.gomez@example.com', 'PozxcKTF6uFvAgl8HDmM2Q=='),
+(7, 'wKbktQgXsH4BUBDsHc0NsQ==', 'pedro.martinez@example.com', 'lnV4DWwTIr3CBNWUTLZ3pg=='),
+(8, 'oAtYOc7lB9KUTQfrDcxCBw==', 'marta.rodriguez@example.com', 'FiDisucqT3rETGXGcQULGQ=='),
+(9, 'Yp9nq3aIJ5z04uaF1uzngw==', 'josefa.ramirez@example.com', 'MLYvjqDXCDYkRUqcNI0zog=='),
+(10, 'vdBcDbGJcVnBE7BgE13h4Q==', 'ramon.herrera@example.com', '0YOg2tdOCRLtgqoBmpgGnQ=='),
+(11, 'utiVYC6i7+lIM1a/Rc62Vw==', 'nicolas.torres@example.com', 'mrYad+7uelhByWA+P3M83Q=='),
+(12, 'RoaOTOrtlPfZtmOpkjbcgBGy8jVM9jaP54j9ot1uGb0=', 'patricia.alvarez@example.com', 'X591tDsdpR0EeJm1pdPdeQ=='),
+(13, 'GZSuSjDfcofUfb+CHrxI0Q==', 'david.ruiz@example.com', '2PM1tkor39hnecmEftQBsg=='),
+(14, 'RVyDXiWZOL0/V8oNzJcsNA==', 'sofia.moreno@example.com', 'vlGoxAa0VBkofTi2g5GrRg=='),
+(15, 'xlqKofb+Dbhis+Gop5l9/A==', 'jorge.diaz@example.com', 'c+O4gBP7kZHpeZyu8F4VWQ=='),
+(16, 'vncG0OBmNhVv+Je+6AqKuA==', 'lucia.gutierrez@example.com', 'iyFPTaw52083gVEcCxdwXA=='),
+(17, 'EjEcBmHnPCtDfrXsGN6XAA==', 'raul.rojas@example.com', 'xT5hwNJlmqOXAbd4qSezTA=='),
+(18, 'M91mkTzWO/70rSvR2GDnFg==', 'elena.castro@example.com', 'sGgUIFUUluCxgxQaW0LjlQ=='),
+(19, 'ksb8DgY4hNOTHS4uQAJf9A==', 'victor.ramos@example.com', 'C7SR05DfytMJ6pkZYwKY0g=='),
+(20, 'omGS/ssUt3l4ZoOFeVrcPA==', 'teresa.mendez@example.com', 'dBDtNc2v6mLHhyeDnjINmQ==');
+
+
 
 

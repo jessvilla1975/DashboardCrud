@@ -7,6 +7,7 @@ import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JComponent;
 import login.Login;
 import login.LoginUsuarios;
@@ -21,6 +22,11 @@ import table.TablaInventario;
 import table.TablaUsuarios;
 import vistas.ingresar.IngresarRopa;
 import vistas.ingresar.IngresarUsers;
+import java.awt.GridLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.Timer;
+
 /**
  *
  * @author Jess
@@ -33,6 +39,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     TablaUsuarios Tusers = new TablaUsuarios();
     IngresarRopa ropa = new IngresarRopa();
     IngresarUsers users = new IngresarUsers();
+
 
    
     
@@ -49,13 +56,74 @@ public class MenuPrincipal extends javax.swing.JFrame {
         buscar.setFocusable(false); 
         LabersUser.setText(user.nombre);
         LabersUser.setForeground(Color.black);
+        Panelropa.setBackground(Color.WHITE);
         estado();
         alerta();
-        
+        panelderopa();
+       
       
         
        
     }
+    
+    private void panelderopa() {
+    Panelropa.setLayout(new GridLayout(NUM_ICONOS, 2, 0, 0)); // N filas, 2 columnas, sin espacios horizontales, espaciado vertical de 10
+
+    iconos = new JLabel[NUM_ICONOS];
+    JLabel[] textos = new JLabel[NUM_ICONOS]; // Arreglo para los JLabels de texto
+    String[] comentarios = {
+        "Excelente",
+        "Me gusta",
+        "Interesante",
+        "Increíble",
+        "Buen trabajo",
+        "Genial",
+        "Bien",
+        "Perfecto"
+           
+    };
+
+    for (int i = 0; i < NUM_ICONOS; i++) {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Icons/icon" + (i + 1) + ".png"));
+        iconos[i] = new JLabel(icon);
+        Panelropa.add(iconos[i]);
+
+        // Agregar el JLabel de texto junto al icono principal
+        textos[i] = new JLabel(comentarios[i]);
+        textos[i].setFont(new Font("Arial", Font.PLAIN, 12)); // Puedes ajustar la fuente y el tamaño según tus preferencias
+        textos[i].setForeground(Color.BLACK); // Puedes cambiar el color del texto si lo deseas
+        Panelropa.add(textos[i]);
+    }
+
+    // Configurar el temporizador para la animación
+    timer = new Timer(INTERVALO_ANIMACION, e -> {
+        for (int i = 0; i < NUM_ICONOS; i++) {
+            JLabel icono = iconos[i];
+            int nuevaPosY = icono.getY() + paso * PASO_DESPLAZAMIENTO;
+
+            if (paso == 1 && nuevaPosY > Panelropa.getHeight()) {
+                icono.setLocation(icono.getX(), LIMITE_SUPERIOR);
+            } else if (paso == -1 && nuevaPosY < LIMITE_SUPERIOR) {
+                icono.setLocation(icono.getX(), Panelropa.getHeight());
+            } else {
+                icono.setLocation(icono.getX(), nuevaPosY);
+            }
+
+            // Mover el JLabel de texto junto con el icono principal
+            JLabel texto = textos[i];
+            texto.setLocation(icono.getX() + icono.getWidth() + ESPACIO_ENTRE_CHAT, icono.getY());
+        }
+
+        Panelropa.repaint();
+    });
+    timer.start();
+}
+
+
+
+
+
+
     private void alerta(){
         int total = crud.StockProductos(); 
         if(total>0){
@@ -112,6 +180,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelUsers.revalidate();
         panelUsers.repaint();
     }
+
     
     private void estado(){
         contarProductos(); 
@@ -154,6 +223,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Panels = new javax.swing.JPanel();
         panelTabla = new javax.swing.JPanel();
         panelUsers = new javax.swing.JPanel();
+        Panelropa = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         Panelmenu = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
@@ -242,19 +313,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         l1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         l1.setForeground(new java.awt.Color(42, 33, 133));
-        l1.setText("001");
+        l1.setText("01");
         l1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         l1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 l1MouseClicked(evt);
             }
         });
-        Ptables.add(l1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 90, 70));
+        Ptables.add(l1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 60, 70));
 
         l2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         l2.setForeground(new java.awt.Color(153, 153, 153));
         l2.setText("Tables");
-        Ptables.add(l2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        Ptables.add(l2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
         ico3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cells.png"))); // NOI18N
         ico3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -412,6 +483,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 updateMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                updateMousePressed(evt);
+            }
         });
         bg.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 230, 30, -1));
 
@@ -430,7 +504,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Panels.setBackground(new java.awt.Color(255, 255, 255));
         Panels.setPreferredSize(new java.awt.Dimension(600, 410));
         Panels.setLayout(new java.awt.BorderLayout());
-        bg.add(Panels, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
+        bg.add(Panels, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 540, -1));
 
         panelTabla.setBackground(new java.awt.Color(255, 255, 255));
         panelTabla.setPreferredSize(new java.awt.Dimension(872, 410));
@@ -441,6 +515,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelUsers.setPreferredSize(new java.awt.Dimension(872, 410));
         panelUsers.setLayout(new java.awt.BorderLayout());
         bg.add(panelUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 345, 516));
+
+        Panelropa.setLayout(new java.awt.BorderLayout());
+        bg.add(Panelropa, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 290, 150, 450));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(42, 33, 133));
+        jLabel4.setText("Chats Customers");
+        bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 260, 150, -1));
 
         Panelmenu.setBackground(new java.awt.Color(42, 33, 133));
         Panelmenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -669,13 +751,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Ptables.setBackground(new java.awt.Color(255,255,255));
         l1.setForeground(new java.awt.Color(42,33,133));
         l2.setForeground(new java.awt.Color(153,153,153));
+        l1.setFont(l1.getFont().deriveFont(48f)); 
+        l2.setFont(l2.getFont().deriveFont(18f)); 
+        l1.setSize(l1.getPreferredSize());
+        l2.setSize(l2.getPreferredSize());
+        l1.revalidate();
+        l2.revalidate();
+        l1.repaint();
+        l2.repaint();    
+        
     }//GEN-LAST:event_PtablesMouseExited
 
     private void PtablesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PtablesMouseEntered
-        Ptables.setBackground(new java.awt.Color(42,33,133));
-        l1.setForeground(new java.awt.Color(255,255,255));
-        l2.setForeground(new java.awt.Color(255,255,255));
-        
+        Ptables.setBackground(new java.awt.Color(42, 33, 133));
+        l1.setForeground(new java.awt.Color(255, 255, 255));
+        l2.setForeground(new java.awt.Color(255, 255, 255));
+        l1.setFont(l1.getFont().deriveFont(53f)); 
+        l2.setFont(l2.getFont().deriveFont(24f)); 
+        l1.setSize(80, 90);
+        l2.setSize(l2.getPreferredSize());
+        l1.revalidate();
+        l2.revalidate();
+        l1.repaint();
+        l2.repaint();    
     }//GEN-LAST:event_PtablesMouseEntered
 
     private void PitemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PitemsMouseClicked
@@ -686,26 +784,62 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Pitems.setBackground(new java.awt.Color(42,33,133));
         cantidad.setForeground(new java.awt.Color(255,255,255));
         l4.setForeground(new java.awt.Color(255,255,255));
+        // Aumentar el tamaño de la fuente
+        cantidad.setFont(cantidad.getFont().deriveFont(53f)); // Ajusta el tamaño según sea necesario
+        l4.setFont(l4.getFont().deriveFont(24f)); // Ajusta el tamaño según sea necesario
+
+        // Aumentar el tamaño de los JLabel
+        cantidad.setSize(cantidad.getPreferredSize());
+        l4.setSize(l4.getPreferredSize());
+        cantidad.revalidate();
+        l4.revalidate();
+        cantidad.repaint();
+        l4.repaint();
+
     }//GEN-LAST:event_PitemsMouseEntered
 
     private void PitemsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PitemsMouseExited
         Pitems.setBackground(new java.awt.Color(255,255,255));
         cantidad.setForeground(new java.awt.Color(42,33,133));
         l4.setForeground(new java.awt.Color(153,153,153));
+        // Aumentar el tamaño de la fuente
+        cantidad.setFont(cantidad.getFont().deriveFont(48f)); // Ajusta el tamaño según sea necesario
+        l4.setFont(l4.getFont().deriveFont(18f)); // Ajusta el tamaño según sea necesario
+
+        // Aumentar el tamaño de los JLabel
+        cantidad.setSize(cantidad.getPreferredSize());
+        l4.setSize(l4.getPreferredSize());
+        cantidad.revalidate();
+        l4.revalidate();
+        cantidad.repaint();
+        l4.repaint();
     }//GEN-LAST:event_PitemsMouseExited
 
     private void PfilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PfilesMouseClicked
-        // TODO add your handling code here:
+        crud.generarReporteProductos();
     }//GEN-LAST:event_PfilesMouseClicked
 
     private void PfilesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PfilesMouseEntered
         Pfiles.setBackground(new java.awt.Color(42,33,133));
         jLabel12.setForeground(new java.awt.Color(255,255,255));
+        // Aumentar el tamaño de la fuente
+        jLabel12.setFont(jLabel12.getFont().deriveFont(24f)); // Ajusta el tamaño según sea necesario
+
+        // Aumentar el tamaño del JLabel
+        jLabel12.setSize(jLabel12.getPreferredSize());
+        jLabel12.revalidate();
+        jLabel12.repaint();
     }//GEN-LAST:event_PfilesMouseEntered
 
     private void PfilesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PfilesMouseExited
         Pfiles.setBackground(new java.awt.Color(255,255,255));
         jLabel12.setForeground(new java.awt.Color(153,153,153));
+        jLabel12.setFont(jLabel12.getFont().deriveFont(18f)); // Ajusta el tamaño según sea necesario
+
+        // Aumentar el tamaño del JLabel
+        jLabel12.setSize(jLabel12.getPreferredSize());
+        jLabel12.revalidate();
+        jLabel12.repaint();
     }//GEN-LAST:event_PfilesMouseExited
 
     private void PstocksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PstocksMouseClicked
@@ -722,29 +856,75 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void PstocksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PstocksMouseEntered
         
         int total = crud.StockProductos(); 
-        if(total>0){
+        if(total > 0){
             Pstocks.setBackground(Color.red);
             jLabel15.setForeground(new java.awt.Color(255,255,255));
             stockCantidad.setForeground(new java.awt.Color(255,255,255));
-        }else{
+
+            // Aumentar el tamaño de la fuente
+            jLabel15.setFont(jLabel15.getFont().deriveFont(24f)); // Ajusta el tamaño según sea necesario
+            stockCantidad.setFont(stockCantidad.getFont().deriveFont(53f)); // Ajusta el tamaño según sea necesario
+
+            // Aumentar el tamaño de los JLabels
+            jLabel15.setSize(jLabel15.getPreferredSize());
+            stockCantidad.setSize(stockCantidad.getPreferredSize());
+            jLabel15.revalidate();
+            stockCantidad.revalidate();
+            jLabel15.repaint();
+            stockCantidad.repaint();
+        } else {
             Pstocks.setBackground(new java.awt.Color(42,33,133));
             stockCantidad.setForeground(new java.awt.Color(255,255,255));
             jLabel15.setForeground(new java.awt.Color(255,255,255));
-            
+
+            // Aumentar el tamaño de la fuente
+            jLabel15.setFont(jLabel15.getFont().deriveFont(24f)); // Ajusta el tamaño según sea necesario
+            stockCantidad.setFont(stockCantidad.getFont().deriveFont(53f)); // Ajusta el tamaño según sea necesario
+
+            // Aumentar el tamaño de los JLabels
+            jLabel15.setSize(jLabel15.getPreferredSize());
+            stockCantidad.setSize(stockCantidad.getPreferredSize());
+            jLabel15.revalidate();
+            stockCantidad.revalidate();
+            jLabel15.repaint();
+            stockCantidad.repaint();
         }
     }//GEN-LAST:event_PstocksMouseEntered
 
     private void PstocksMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PstocksMouseExited
         int total = crud.StockProductos(); 
-        if(total>0){
+        if(total > 0){
             Pstocks.setBackground(new java.awt.Color(255,255,255));
             jLabel15.setForeground(new java.awt.Color(196,12,12));
             stockCantidad.setForeground(new java.awt.Color(196,12,12));
-        }else{
+
+            // Restaurar el tamaño de la fuente
+            jLabel15.setFont(jLabel15.getFont().deriveFont(18f)); // Ajusta el tamaño según sea necesario
+            stockCantidad.setFont(stockCantidad.getFont().deriveFont(48f)); // Ajusta el tamaño según sea necesario
+
+            // Ajustar el tamaño de los JLabels
+            jLabel15.setSize(jLabel15.getPreferredSize());
+            stockCantidad.setSize(stockCantidad.getPreferredSize());
+            jLabel15.revalidate();
+            stockCantidad.revalidate();
+            jLabel15.repaint();
+            stockCantidad.repaint();
+        } else {
             Pstocks.setBackground(new java.awt.Color(255,255,255));
             stockCantidad.setForeground(new java.awt.Color(42,33,133));
             jLabel15.setForeground(new java.awt.Color(153,153,153));
-            
+
+            // Restaurar el tamaño de la fuente
+            jLabel15.setFont(jLabel15.getFont().deriveFont(18f)); // Ajusta el tamaño según sea necesario
+            stockCantidad.setFont(stockCantidad.getFont().deriveFont(48f)); // Ajusta el tamaño según sea necesario
+
+            // Ajustar el tamaño de los JLabels
+            jLabel15.setSize(jLabel15.getPreferredSize());
+            stockCantidad.setSize(stockCantidad.getPreferredSize());
+            jLabel15.revalidate();
+            stockCantidad.revalidate();
+            jLabel15.repaint();
+            stockCantidad.repaint();
         }
         
     }//GEN-LAST:event_PstocksMouseExited
@@ -816,18 +996,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         int id = Integer.parseInt(buscar.getText());
         tablita.testData2(id);
         tablita.setVisible(true);
+         buscar.setText("Search here");
         
         
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        System.out.println("boton update");
-        estado();
-        alerta();
+
         addTablaPanel();
         tablita.testData3();
+        alerta();
+        estado();
+        
         //tablita.setBounds(330, 300, 872, 418);
-        tablita.setVisible(true);
+       // tablita.setVisible(true);
     }//GEN-LAST:event_updateMouseClicked
 
     private void ico3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ico3MouseClicked
@@ -874,19 +1056,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Titulo.setVisible(true);
         buscar.setVisible(true);
         jLabel2.setVisible(true);
+        jLabel4.setVisible(true);
         addTablaPanel();
         //tablita.setVisible(true);
         panelTabla.setVisible(true);
         addInsertar();
         //ropa.setVisible(true);
-        addProductos.setVisible(true);
+        //addProductos.setVisible(true);
         panelUsers.setVisible(false);
         users.setVisible(false);
         
         
         //PanelTablaUses.setVisible(false);
         Tusers.setVisible(false);
-        
+        Panelropa.setVisible(true);
         
     }
     private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
@@ -898,6 +1081,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         users.setVisible(true);
         Panels.setVisible(true);
         Tusers.setVisible(true);
+        Panelropa.setVisible(false);
+        jLabel4.setVisible(false);
         
         
     }//GEN-LAST:event_registerMouseClicked
@@ -911,6 +1096,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void bgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_bgMouseClicked
+
+    private void updateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateMousePressed
     public void contarProductos() {
     String cant = String.valueOf(crud.ContarProductos()); 
     cantidad.setText(cant);
@@ -920,8 +1109,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void contarProductosAgotados() {
     String cant = String.valueOf(crud.StockProductos()); 
     stockCantidad.setText(cant);
-    
-    
     }
    private int posicionY = 0;
 
@@ -969,13 +1156,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    private final int LIMITE_SUPERIOR = -100; 
+    private final int NUM_ICONOS = 8; // Número total de iconos
+    private final int INTERVALO_ANIMACION = 200; // Intervalo de tiempo en milisegundos para la animación
+    private final int PASO_DESPLAZAMIENTO = 10;
+    private int posY = 0; // Posición inicial del primer icono
+    private int paso = -1; // Dirección del desplazamiento (1: hacia abajo, -1: hacia arriba)
+    private Timer timer; // Temporizador para la animación
+    private JLabel[] iconos; // Arreglo para almacenar los JLabels de los iconos
+    private final int ESPACIO_ENTRE_CHAT = 1;
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelAlerta;
     public javax.swing.JLabel LabersUser;
     private javax.swing.JPanel Panelmenu;
-    private javax.swing.JPanel Panels;
+    private javax.swing.JPanel Panelropa;
+    public javax.swing.JPanel Panels;
     private javax.swing.JPanel Pfiles;
     private javax.swing.JPanel Pitems;
     private javax.swing.JPanel Pstocks;
@@ -997,6 +1193,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel l1;
     private javax.swing.JLabel l2;

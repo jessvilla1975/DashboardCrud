@@ -195,7 +195,7 @@ public class TablaUsuarios extends javax.swing.JPanel {
         table.setSelectionForeground(new java.awt.Color(255, 255, 255));
         scroll.setViewportView(table);
 
-        add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 410));
+        add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 410));
     }// </editor-fold>//GEN-END:initComponents
 
 
