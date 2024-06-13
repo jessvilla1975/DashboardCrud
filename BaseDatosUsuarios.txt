@@ -1,0 +1,27 @@
+-- delete
+TRUNCATE TABLE usuarios;
+
+
+INSERT INTO usuarios (id, nombre, email, password) VALUES
+(1, 'Juan Perez', 'juan.perez@example.com', 'password123'),
+(2, 'Maria Lopez', 'maria.lopez@example.com', 'password456'),
+(3, 'Carlos Sanchez', 'carlos.sanchez@example.com', 'password789'),
+(4, 'Ana Garcia', 'ana.garcia@example.com', 'password101'),
+(5, 'Luis Fernandez', 'luis.fernandez@example.com', 'password202'),
+(6, 'Laura Gomez', 'laura.gomez@example.com', 'password303'),
+(7, 'Pedro Martinez', 'pedro.martinez@example.com', 'password404'),
+(8, 'Marta Rodriguez', 'marta.rodriguez@example.com', 'password505'),
+(9, 'Josefa Ramirez', 'josefa.ramirez@example.com', 'password606'),
+(10, 'Ramon Herrera', 'ramon.herrera@example.com', 'password707'),
+(11, 'Nicolas Torres', 'nicolas.torres@example.com', 'password808'),
+(12, 'Patricia Alvarez', 'patricia.alvarez@example.com', 'password909'),
+(13, 'David Ruiz', 'david.ruiz@example.com', 'password010'),
+(14, 'Sofia Moreno', 'sofia.moreno@example.com', 'password111'),
+(15, 'Jorge Diaz', 'jorge.diaz@example.com', 'password212'),
+(16, 'Lucia Gutierrez', 'lucia.gutierrez@example.com', 'password313'),
+(17, 'Raul Rojas', 'raul.rojas@example.com', 'password414'),
+(18, 'Elena Castro', 'elena.castro@example.com', 'password515'),
+(19, 'Victor Ramos', 'victor.ramos@example.com', 'password616'),
+(20, 'Teresa Mendez', 'teresa.mendez@example.com', 'password717');
+
+

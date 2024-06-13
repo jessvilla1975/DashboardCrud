@@ -1,21 +1,81 @@
 package login;
 import AppPackage.AnimationClass;
-import java.awt.Color;
+import java.awt.Dimension;
+
 import vistas.menus.MenuPrincipal;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form xs
      */
+    private int posicionX = 0;
+    private boolean estado = true;
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
         userTxt.setFocusable(false); 
+        PanelLogin.setVisible(false);
         //this.setUndecorated(true);
+        
     }
+    
+    /*private class Der implements Runnable {
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    Thread.sleep(10); // Ajusta la velocidad del movimiento
+                    posicionX += 1; // Incrementa la posición en X
+
+                    // Actualizar la posición del panel
+                    jPanel2.setBounds(posicionX, jPanel2.getY(), jPanel2.getWidth(), jPanel2.getHeight());
+
+                    // Reiniciar la posición si el panel sale de la ventana
+                    if (posicionX >= 100) {
+                        posicionX = 100;
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }*/
+    
+    /*private class Izq implements Runnable {
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                Thread.sleep(10); // Ajusta la velocidad del movimiento
+                posicionX -= 1; // Decrementa la posición en X para mover hacia la izquierda
+
+                // Actualizar la posición del panel
+                PanelLogin.setBounds(posicionX, PanelLogin.getY(), PanelLogin.getWidth(), PanelLogin.getHeight());
+
+                // Reiniciar la posición si el panel sale de la ventana
+                if (posicionX <= 2000) {
+                    posicionX = 1000;
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}*/
+    
+  /*Thread hiloMovimiento = new Thread(new MovimientoPanel());
+    hiloMovimiento.start();*/
+
+ 
+    
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,14 +87,14 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         back = new javax.swing.JPanel();
-        Home = new javax.swing.JLabel();
-        About = new javax.swing.JLabel();
-        Login = new javax.swing.JLabel();
-        About2 = new javax.swing.JLabel();
         Inventory = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        IM = new javax.swing.JLabel();
+        Login = new javax.swing.JLabel();
+        Explore = new javax.swing.JLabel();
+        about = new javax.swing.JLabel();
+        home = new javax.swing.JLabel();
+        IM1 = new javax.swing.JLabel();
         PanelLogin = new javax.swing.JPanel();
         userTxt = new javax.swing.JTextField();
         login = new javax.swing.JButton();
@@ -48,36 +108,10 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1370, 735));
         setResizable(false);
         setSize(new java.awt.Dimension(1361, 735));
 
         back.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Home.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Home.setForeground(new java.awt.Color(255, 255, 255));
-        Home.setText("Home");
-        back.add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 10, -1, -1));
-
-        About.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        About.setForeground(new java.awt.Color(255, 255, 255));
-        About.setText("Explore");
-        back.add(About, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, -1, -1));
-
-        Login.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Login.setForeground(new java.awt.Color(255, 255, 255));
-        Login.setText("Login");
-        Login.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LoginMouseClicked(evt);
-            }
-        });
-        back.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 10, -1, -1));
-
-        About2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        About2.setForeground(new java.awt.Color(255, 255, 255));
-        About2.setText("About");
-        back.add(About2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 10, -1, -1));
 
         Inventory.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Inventory.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,22 +128,102 @@ public class Login extends javax.swing.JFrame {
         jLabel7.setText("Inventory");
         back.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
 
-        IM.setBackground(new java.awt.Color(42, 33, 133, 150));
-        IM.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        IM.setForeground(new java.awt.Color(255, 255, 255));
-        IM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        IM.setText("Inventory manager");
-        IM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        IM.setOpaque(true);
-        IM.addMouseListener(new java.awt.event.MouseAdapter() {
+        Login.setBackground(new java.awt.Color(0, 0, 0, 0));
+        Login.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Login.setForeground(new java.awt.Color(255, 255, 255));
+        Login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Login.setText("Login");
+        Login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Login.setOpaque(true);
+        Login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LoginMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                IMMouseEntered(evt);
+                LoginMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                IMMouseExited(evt);
+                LoginMouseExited(evt);
             }
         });
-        back.add(IM, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 180, 40));
+        back.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 2, 60, 40));
+
+        Explore.setBackground(new java.awt.Color(0, 0, 0, 0));
+        Explore.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Explore.setForeground(new java.awt.Color(255, 255, 255));
+        Explore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Explore.setText("Explore");
+        Explore.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Explore.setOpaque(true);
+        Explore.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ExploreMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ExploreMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ExploreMouseExited(evt);
+            }
+        });
+        back.add(Explore, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 2, 70, 40));
+
+        about.setBackground(new java.awt.Color(0, 0, 0, 0));
+        about.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        about.setForeground(new java.awt.Color(255, 255, 255));
+        about.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        about.setText("About");
+        about.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        about.setOpaque(true);
+        about.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aboutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                aboutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                aboutMouseExited(evt);
+            }
+        });
+        back.add(about, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 2, 70, 40));
+
+        home.setBackground(new java.awt.Color(0, 0, 0, 0));
+        home.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        home.setForeground(new java.awt.Color(255, 255, 255));
+        home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home.setText("Home");
+        home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        home.setOpaque(true);
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                homeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                homeMouseExited(evt);
+            }
+        });
+        back.add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 2, 70, 40));
+
+        IM1.setBackground(new java.awt.Color(42, 33, 133, 150));
+        IM1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        IM1.setForeground(new java.awt.Color(255, 255, 255));
+        IM1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        IM1.setText("Inventory manager");
+        IM1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        IM1.setOpaque(true);
+        IM1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                IM1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                IM1MouseExited(evt);
+            }
+        });
+        back.add(IM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 180, 40));
 
         PanelLogin.setBackground(new java.awt.Color(0, 0, 0, 150));
 
@@ -227,7 +341,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
-        back.add(PanelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 190, 310, 370));
+        back.add(PanelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 180, 310, 370));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/videito.gif"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(1370, 735));
@@ -285,20 +399,29 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_loginMouseExited
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        System.out.println("Se presionó el botón login");
-        usersLogin log = new usersLogin ();
-        System.out.println(userTxt.getText()+passTxt.getText());
-        boolean verificar = log.ingresoAdmin(userTxt.getText(), passTxt.getText());
-        if(verificar == true)
-        {
+        //System.out.println("Se presionó el botón login");
+        LoginUsuarios log = new LoginUsuarios ();
+        String user = userTxt.getText();
+        String password = passTxt.getText();
+        boolean verificarAdmin = log.verificarCredenciales(user, password);
+        boolean verificarUsuario = false;
+        try {
+            int id = Integer.parseInt(user);
+            verificarUsuario = log.verificarCredenciales(user, password);
+        } catch (NumberFormatException e) {
+            //System.out.println("El ID no es un número válido: " + user);
+        }
+        if (verificarAdmin || verificarUsuario) {
             setVisible(false);
             MenuPrincipal mp = new MenuPrincipal();
             mp.setVisible(true);
-            //mp.welcome.setText("Hello "+userTxt.getText());
-        }else{
-            userTxt.setText("Enter your username");
-            passTxt.setText("*******");
-
+            String name = log.nombre;
+            mp.LabersUser.setText("Hello, "+name);
+            //mp.welcome.setText("Hello " + userTxt.getText());
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Error de login", JOptionPane.ERROR_MESSAGE);
+            userTxt.setText("");
+            passTxt.setText("");
         }
     }//GEN-LAST:event_loginActionPerformed
 
@@ -325,20 +448,69 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_passTxtMousePressed
 
-    private void IMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMMouseEntered
-        IM.setBackground(new java.awt.Color(255,255,255));
-        IM.setForeground(new java.awt.Color(42,33,133));
-    }//GEN-LAST:event_IMMouseEntered
+    private void LoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseEntered
+        Login.setBackground(new java.awt.Color(0,0,0,150));
+        Login.setForeground(new java.awt.Color(255,255,255));
+    }//GEN-LAST:event_LoginMouseEntered
 
-    private void IMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IMMouseExited
-        IM.setBackground(new java.awt.Color(42,33,133));
-        IM.setForeground(new java.awt.Color(255,255,255));
-    }//GEN-LAST:event_IMMouseExited
+    private void LoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseExited
+        Login.setBackground(new java.awt.Color(0,0,0,0));
+        Login.setForeground(new java.awt.Color(255,255,255));
+    }//GEN-LAST:event_LoginMouseExited
+
+    private void IM1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IM1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IM1MouseEntered
+
+    private void IM1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IM1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IM1MouseExited
 
     private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
-        AnimationClass menus = new AnimationClass();
-        menus.jLabelXLeft(250, 220, 5, 10, icon);
+       PanelLogin.setVisible(true);
     }//GEN-LAST:event_LoginMouseClicked
+
+    private void ExploreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExploreMouseClicked
+        // TODO add your h
+    }//GEN-LAST:event_ExploreMouseClicked
+
+    private void ExploreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExploreMouseEntered
+        Explore.setBackground(new java.awt.Color(0,0,0,150));
+        Explore.setForeground(new java.awt.Color(255,255,255));
+    }//GEN-LAST:event_ExploreMouseEntered
+
+    private void ExploreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExploreMouseExited
+        Explore.setBackground(new java.awt.Color(0,0,0,0));
+        Explore.setForeground(new java.awt.Color(255,255,255));
+    }//GEN-LAST:event_ExploreMouseExited
+
+    private void aboutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aboutMouseClicked
+
+    private void aboutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutMouseEntered
+        about.setBackground(new java.awt.Color(0,0,0,150));
+        about.setForeground(new java.awt.Color(255,255,255));
+    }//GEN-LAST:event_aboutMouseEntered
+
+    private void aboutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutMouseExited
+        about.setBackground(new java.awt.Color(0,0,0,0));
+        about.setForeground(new java.awt.Color(255,255,255));
+    }//GEN-LAST:event_aboutMouseExited
+
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeMouseClicked
+
+    private void homeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseEntered
+        home.setBackground(new java.awt.Color(0,0,0,150));
+        home.setForeground(new java.awt.Color(255,255,255));
+    }//GEN-LAST:event_homeMouseEntered
+
+    private void homeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseExited
+        home.setBackground(new java.awt.Color(0,0,0,0));
+        home.setForeground(new java.awt.Color(255,255,255));
+    }//GEN-LAST:event_homeMouseExited
 
     /**
      * @param args the command line arguments
@@ -379,14 +551,14 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel About;
-    private javax.swing.JLabel About2;
-    private javax.swing.JLabel Home;
-    private javax.swing.JLabel IM;
+    private javax.swing.JLabel Explore;
+    private javax.swing.JLabel IM1;
     private javax.swing.JLabel Inventory;
     private javax.swing.JLabel Login;
     private javax.swing.JPanel PanelLogin;
+    private javax.swing.JLabel about;
     private javax.swing.JPanel back;
+    private javax.swing.JLabel home;
     private javax.swing.JLabel icon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -396,6 +568,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JButton login;
     private javax.swing.JPasswordField passTxt;
-    private javax.swing.JTextField userTxt;
+    public javax.swing.JTextField userTxt;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class conexionsql {
+public class ConexionSQL {
     String bd = "inventariods";
     Connection cx;
     String url="jdbc:mysql://localhost:3306/";
@@ -16,7 +16,7 @@ public class conexionsql {
     String driver = "com.mysql.cj.jdbc.Driver";
     
     
-    public conexionsql(){
+    public ConexionSQL(){
     }
     
     public Connection conectar(){
@@ -25,7 +25,7 @@ public class conexionsql {
             cx = DriverManager.getConnection(url+bd,usuario,clave);
             System.out.println("conexion exitosa");
         } catch (ClassNotFoundException |SQLException ex) {
-            Logger.getLogger(conexionsql.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionSQL.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("error coneectar");
         }
         
@@ -36,12 +36,12 @@ public class conexionsql {
         try {
             cx.close();
         } catch (SQLException ex) {
-            Logger.getLogger(conexionsql.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionSQL.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     //prueba de conexion 
     public static void main(String[] args){
-        conexionsql co = new conexionsql();
+        ConexionSQL co = new ConexionSQL();
         co.conectar();    
     
     }
