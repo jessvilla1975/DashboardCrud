@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 public class ConexionSQL {
     String bd = "inventariods";
-    Connection cx;
+    public Connection cx;
     String url="jdbc:mysql://localhost:3306/";
     String usuario="root";
     String clave="1111";
