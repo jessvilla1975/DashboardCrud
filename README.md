@@ -1,12 +1,12 @@
 # DashboardCrud
-#Descripción General
+# Descripción General
 InventoryManager es una aplicación de gestión de inventario diseñada para una tienda de ropa, que permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre productos, categorías y proveedores.
 
 ## Instrucciones de Uso
 1. Haz una copia de este repositorio mediante el comando de clonación.
 2. Extrae el contenido del archivo comprimido (rar) llamado "Librerias" y añádelo a las dependencias de tu proyecto.
-3. Importa las tablas del archivo nventarioBase.sql en MySQL para configurar la base de datos.
-4. Inserta los datos proporcionados en las sentencias de inserts.txt correspondientes.
+3. Importa las tablas del archivo IventarioBase.sql en MySQL para configurar la base de datos.
+4. Inserta los datos proporcionados en las sentencias de BaseDatosInventario.txt y BaseDatosUsuarios.txt correspondientes.
 5. Actualiza nombre del server de la data base, la dirección URL, nombre de usuario y contraseña en tu servidor de MySQL según las configuraciones necesarias.
 
 ```java
@@ -98,10 +98,16 @@ Utiliza las credenciales predeterminadas:
 [![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/02c8920c-9e69-4149-bf02-dd7f894ca5b1)](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/676450eb-6873-4b57-ab8d-5b389cb51978)
 
 
-## Interfaz de tablas
+## Interfaz de tablas de productos
 ![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/76cd0049-00de-4411-9a95-f9774859cd10)
 
 ## Interfaz de insertar producto
 ![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/ef9320fe-5386-44c0-8962-14b5457b6310)
+
+## Interfaz de registro de usuarios
+![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/9545c88c-1370-4679-846a-637b05af9e13)
+
+## Interfaz de tablas de usuarios registrados con encriptado
+![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/a5ce623b-c1f7-457c-8430-fb678da520c7)
 
 
