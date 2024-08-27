@@ -1,4 +1,5 @@
 # DashboardCrud
+
 # Descripción General
 InventoryManager es una aplicación de gestión de inventario diseñada para una tienda de ropa, que permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre productos, categorías y proveedores.
 
@@ -90,6 +91,9 @@ Utiliza las credenciales predeterminadas:
             └── MenuPrincipal.form
             └── MenuPrincipal.java
 ```
+## Manual de Usuario
+https://youtu.be/u52LZSjcGV0
+
 ## Interfaz Login
 [![image](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/8b655848-8633-48dd-aa78-be113a7f43a2)](https://github.com/jessvilla1975/DashboardCrud/assets/114515509/35f85f1c-2763-4ffb-8e71-414c445d35af)
 
